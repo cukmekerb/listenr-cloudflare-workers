@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "name": "listenr-metatag-injector",
+  "version": "1.0.0",
+  "description": "Injects metatags into listenr's view page",
+  "main": "index.js",
+  "author": "cukmekerb <cukmekerb+git@gmail.com>",
+  "license": "WTFPL"
+}

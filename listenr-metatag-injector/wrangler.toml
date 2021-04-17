@@ -1,0 +1,7 @@
+name = "listenr-metatag-injector"
+type = "javascript"
+
+account_id = "165d8709b321cdb012ba8c1a8707786a"
+workers_dev = true
+route = ""
+zone_id = ""
