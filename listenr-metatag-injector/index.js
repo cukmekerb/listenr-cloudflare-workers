@@ -38,7 +38,13 @@ var scriptInjectionRules = {
 addEventListener('fetch', event => {
     event.passThroughOnException();
     event.respondWith(handleRequest(event.request));
-})
+});
+
+function sanitizeHTML (str) {
+	return str.replace(/javascript:/gi, '').replace(/[^\w-_. ]/gi, function (c) {
+		return `&#${c.charCodeAt(0)};`;
+	});
+}
 
 async function handleRequest(request) {
     var rurl = new URL(request.url);
@@ -67,12 +73,18 @@ async function handleRequest(request) {
     <meta name="og:description" content="The simplest podcatcher of them all">
     <meta name="og:image" content="icon-512.png">
     <meta name="og:url" content="https://listenr.gq/">
-    <meta name="og:site_name" content="Listenr">`
+    <meta name="og:site_name" content="Listenr">`;
       
     }
     else {
       var data_request = await fetch("https://lstnr.gq/.netlify/functions/get_show_info?showid="+url_params.get("AetBh69feedbH"));
-      var show_info = await data_request.json()
+      var show_info = await data_request.json();
+      for (var i in show_info) {
+        if (i == "image") {
+          continue;
+        }
+        show_info[i] = sanitizeHTML(show_info[i]);
+      }
       script_to_inject = `<meta name="description" content="${show_info.description}">
     <meta name="image" content="i${show_info.image}">
     <meta itemprop="name" content="${show_info.title} - listenr">
