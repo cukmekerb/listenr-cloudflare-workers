@@ -5,5 +5,5 @@
   "description": "Injects metatags into listenr's view page",
   "main": "index.js",
   "author": "cukmekerb <cukmekerb+git@gmail.com>",
-  "license": "WTFPL"
+  "license": "MIT"
 }

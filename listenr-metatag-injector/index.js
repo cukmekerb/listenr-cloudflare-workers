@@ -84,6 +84,7 @@ async function handleRequest(request) {
           continue;
         }
         show_info[i] = sanitizeHTML(show_info[i]);
+        show_info[i] = show_info[i].replace(/\n/g, " ");
       }
       script_to_inject = `<meta name="description" content="${show_info.description}">
     <meta name="image" content="i${show_info.image}">
