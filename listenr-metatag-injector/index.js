@@ -50,8 +50,8 @@ async function handleRequest(request) {
     var rurl = new URL(request.url);
     var response;
     if (rurl.origin == "http://127.0.0.1:8787" || rurl.origin == "https://listenr-metatag-injector.cukmekerb-cloudflare.workers.dev") {
-     response = await fetch("https://listenr.gq/view.html?AetBh69feedbH=aHR0cHM6Ly9hbmNob3IuZm0vcy80YzUwNTJkNC9wb2RjYXN0L3Jzcw==");
-     rurl = new URL("https://listenr.gq/view.html?AetBh69feedbH=aHR0cHM6Ly9hbmNob3IuZm0vcy80YzUwNTJkNC9wb2RjYXN0L3Jzcw==");
+     response = await fetch("https://608ca46dcbfb5f0007ed5690--listenr.netlify.app/view.html?AetBh69feedbH=aHR0cHM6Ly9hbmNob3IuZm0vcy80YzUwNTJkNC9wb2RjYXN0L3Jzcw==");
+     rurl = new URL("https://608ca46dcbfb5f0007ed5690--listenr.netlify.app/view.html?AetBh69feedbH=aHR0cHM6Ly9hbmNob3IuZm0vcy80YzUwNTJkNC9wb2RjYXN0L3Jzcw==");
     }
     else {
      response = await fetch(rurl.origin + rurl.pathname);
@@ -105,14 +105,15 @@ async function handleRequest(request) {
         "<title>listenr</title>": `<title>${show_info.title} - listenr</title>`
       };
     }
-    scriptInjectionRules[script_to_inject] = 0;
+    script_to_inject = script_to_inject.replace(/\n/gi, "");
+    scriptInjectionRules[script_to_inject] = 69;
     html = replaceText(html);
     html = injectScripts(html);
 
     // return modified response
     return new Response(html, {
         headers: response.headers
-    })
+    });
 }
 
 function replaceText(html) {
@@ -165,6 +166,10 @@ function injectScripts(html) {
                 break;
             case 3:
                 var i = html.getInjectionIndex(new RegExp("</body>", regexModifiers));
+                html = html.insertAt(i, k);
+                break;
+            case 69:
+                var i = html.getInjectionIndex(new RegExp("<\!doctype html>", regexModifiers));
                 html = html.insertAt(i, k);
                 break;
         }
