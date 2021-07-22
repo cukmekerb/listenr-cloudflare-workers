@@ -50,8 +50,8 @@ async function handleRequest(request) {
     var rurl = new URL(request.url);
     var response;
     if (rurl.origin == "http://127.0.0.1:8787" || rurl.origin == "https://listenr-metatag-injector.cukmekerb-cloudflare.workers.dev") {
-     response = await fetch("https://608ca46dcbfb5f0007ed5690--listenr.netlify.app/view.html?AetBh69feedbH=aHR0cHM6Ly9hbmNob3IuZm0vcy80YzUwNTJkNC9wb2RjYXN0L3Jzcw==");
-     rurl = new URL("https://608ca46dcbfb5f0007ed5690--listenr.netlify.app/view.html?AetBh69feedbH=aHR0cHM6Ly9hbmNob3IuZm0vcy80YzUwNTJkNC9wb2RjYXN0L3Jzcw==");
+     response = await fetch("https://listenrapp.me/view.html?AetBh69feedbH=aHR0cHM6Ly9hbmNob3IuZm0vcy80YzUwNTJkNC9wb2RjYXN0L3Jzcw==");
+     rurl = new URL("https://listenrapp.me/view.html?AetBh69feedbH=aHR0cHM6Ly9hbmNob3IuZm0vcy80YzUwNTJkNC9wb2RjYXN0L3Jzcw==");
     }
     else {
      response = await fetch(rurl.origin + rurl.pathname);
@@ -72,7 +72,7 @@ async function handleRequest(request) {
     <meta name="og:title" content="Listenr">
     <meta name="og:description" content="The simplest podcatcher of them all">
     <meta name="og:image" content="icon-512.png">
-    <meta name="og:url" content="https://listenr.gq/">
+    <meta name="og:url" content="https://listenrapp.me/">
     <meta name="og:site_name" content="Listenr">`;
       
     }
@@ -98,7 +98,7 @@ async function handleRequest(request) {
     <meta name="og:title" content="${show_info.title} - listenr">
     <meta name="og:description" content="${show_info.description}">
     <meta name="og:image" content="${show_info.image}">
-    <meta name="og:url" content="https://listenr.gq/">
+    <meta name="og:url" content="https://listenrapp.me/">
     <meta name="og:site_name" content="${show_info.title} - listenr">`;
       
       textReplacementRules = {
